@@ -13,15 +13,17 @@ export default class PostDetails extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    axios.get(`/post/${id}`).then((res) => {
-      if (res.data.success) {
-        this.setState({
-          post: res.data.post,
-        });
+    axios
+      .get(`https://mern-stack-crudapp.herokuapp.com/post/${id}`)
+      .then((res) => {
+        if (res.data.success) {
+          this.setState({
+            post: res.data.post,
+          });
 
-        console.log(this.state.post);
-      }
-    });
+          console.log(this.state.post);
+        }
+      });
   }
   render() {
     const { topic, description, postCategory } = this.state.post;
