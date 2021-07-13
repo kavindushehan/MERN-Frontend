@@ -51,17 +51,19 @@ export default class EditPost extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    axios.get(`http://localhost:8000/post/${id}`).then((res) => {
-      if (res.data.success) {
-        this.setState({
-          topic: res.data.post.topic,
-          description: res.data.post.description,
-          postCategory: res.data.post.postCategory,
-        });
+    axios
+      .get(`https://mern-stack-crudapp.herokuapp.com/post/${id}`)
+      .then((res) => {
+        if (res.data.success) {
+          this.setState({
+            topic: res.data.post.topic,
+            description: res.data.post.description,
+            postCategory: res.data.post.postCategory,
+          });
 
-        console.log(this.state.post);
-      }
-    });
+          console.log(this.state.post);
+        }
+      });
   }
 
   render() {

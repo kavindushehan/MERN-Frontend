@@ -33,17 +33,15 @@ export default class CreatePost extends Component {
 
     console.log(data);
 
-    axios
-      .post("https://mern-stack-crudapp.herokuapp.com/post/save", data)
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            topic: "",
-            description: "",
-            postCategory: "",
-          });
-        }
-      });
+    axios.post("/post/save", data).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          topic: "",
+          description: "",
+          postCategory: "",
+        });
+      }
+    });
   };
   render() {
     return (
