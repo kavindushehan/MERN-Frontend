@@ -15,7 +15,7 @@ export default class Home extends Component {
   }
 
   retrievePosts() {
-    axios.get("http://localhost:8000/posts").then((res) => {
+    axios.get("https://mern-stack-crudapp.herokuapp.com/posts").then((res) => {
       if (res.data.success) {
         this.setState({
           posts: res.data.existingPosts,
@@ -27,10 +27,12 @@ export default class Home extends Component {
   }
 
   onDelete = (id) => {
-    axios.delete(`http://localhost:8000/post/delete/${id}`).then((res) => {
-      alert("Deleted Successfully");
-      this.retrievePosts();
-    });
+    axios
+      .delete(`https://mern-stack-crudapp.herokuapp.com/post/delete/${id}`)
+      .then((res) => {
+        alert("Deleted Successfully");
+        this.retrievePosts();
+      });
   };
 
   filterData(posts, searchKey) {
@@ -47,7 +49,7 @@ export default class Home extends Component {
     const searchKey = e.currentTarget.value;
     console.log(e.currentTarget.value);
 
-    axios.get("http://localhost:8000/posts").then((res) => {
+    axios.get("https://mern-stack-crudapp.herokuapp.com/posts").then((res) => {
       if (res.data.success) {
         this.filterData(res.data.existingPosts, searchKey);
       }

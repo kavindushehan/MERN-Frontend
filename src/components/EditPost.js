@@ -34,16 +34,18 @@ export default class EditPost extends Component {
 
     console.log(data);
 
-    axios.put(`http://localhost:8000/post/update/${id}`, data).then((res) => {
-      if (res.data.success) {
-        alert("Post Updated Successfully");
-        this.setState({
-          topic: "",
-          description: "",
-          postCategory: "",
-        });
-      }
-    });
+    axios
+      .put(`https://mern-stack-crudapp.herokuapp.com/post/update/${id}`, data)
+      .then((res) => {
+        if (res.data.success) {
+          alert("Post Updated Successfully");
+          this.setState({
+            topic: "",
+            description: "",
+            postCategory: "",
+          });
+        }
+      });
   };
 
   componentDidMount() {
